@@ -27,7 +27,7 @@ export default function Favorites() {
     );
     if (confirmDelete) {
       const result = await axios.delete(`${BACKEND_URL}${id}`);
-      navigate(0);
+      navigate("/");
     }
   }
 
