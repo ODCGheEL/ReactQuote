@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { BACKEND_URL } from "@/lib/utils";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,7 @@ export default function Home() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const result = await axios.post("http://localhost:4000/api/quotes", {
+    const result = await axios.post(`${BACKEND_URL}`, {
       name,
       description,
     });

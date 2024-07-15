@@ -10,13 +10,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { FilePenLine, Trash2 } from "lucide-react";
+import { BACKEND_URL } from "@/lib/utils";
 
 export default function Favorites() {
   const navigate = useNavigate();
   const [quotes, setQuotes] = useState([]);
 
   async function fetchQuotes() {
-    const result = await axios.get("http://localhost:4000/api/quotes");
+    const result = await axios.get(`${BACKEND_URL}`);
     setQuotes(result.data);
   }
 
@@ -25,9 +26,7 @@ export default function Favorites() {
       "Are you sure you want to delete this quote?"
     );
     if (confirmDelete) {
-      const result = await axios.delete(
-        `http://localhost:4000/api/quotes/${id}`
-      );
+      const result = await axios.delete(`${BACKEND_URL}${id}`);
       navigate(0);
     }
   }
@@ -57,7 +56,10 @@ export default function Favorites() {
                   >
                     <Trash2 />
                   </Button>
-                  <Button variant="ghost" onClick={()=> navigate(`/favorites/${quote.id}`)}>
+                  <Button
+                    variant="ghost"
+                    onClick={() => navigate(`/favorites/${quote.id}`)}
+                  >
                     <FilePenLine />
                   </Button>
                 </CardFooter>

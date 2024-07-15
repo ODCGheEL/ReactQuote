@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { BACKEND_URL } from "@/lib/utils";
 
 export default function EditFavorite() {
   const params = useParams();
@@ -13,7 +14,7 @@ export default function EditFavorite() {
   useEffect(() => {
     async function fetchQuote() {
       const quote = await axios.get(
-        `http://localhost:4000/api/quotes/${params.id}`
+        `${BACKEND_URL}${params.id}`
       );
       setName(quote.data.name);
       setDescription(quote.data.description);
@@ -24,7 +25,7 @@ export default function EditFavorite() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const result = await axios.put(
-      `http://localhost:4000/api/quotes/${params.id}`,
+      `${BACKEND_URL}${params.id}`,
       {
         name,
         description,
