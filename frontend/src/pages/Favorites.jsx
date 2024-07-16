@@ -26,8 +26,9 @@ export default function Favorites() {
       "Are you sure you want to delete this quote?"
     );
     if (confirmDelete) {
-      const result = await axios.delete(`${BACKEND_URL}${id}`);
-      navigate("/favorites");
+      const result = await axios
+        .delete(`${BACKEND_URL}${id}`)
+        .then(() => navigate("/favorites"));
     }
   }
 
