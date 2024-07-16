@@ -1,4 +1,4 @@
-import { HashRouter Routes, Route } from "react-router-dom";
+import { BrowserRouter Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import NotFound from "./pages/NotFound";
@@ -7,7 +7,7 @@ import EditFavorite from "./pages/EditFavorite";
 
 function App() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <Navbar />
       <div className="container mx-auto p-10">
         <Routes>
@@ -17,7 +17,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
